@@ -34,7 +34,7 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 """
 
-Brutce Force
+# Brutce Force
 
 from collections import defaultdict 
 class Solution(object):
@@ -66,5 +66,42 @@ class Solution(object):
 
 
         return max
+
+# Efficient
+from collections import defaultdict 
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        char_set = set()
+        max_v = 0
+        j = 0
+        for i in range(0, len(s)):
+            while j < len(s):
+                #temp_s = s[i:j+1]
+                #print(temp_s)
+                print(char_set)
+                if s[j] in char_set:
+                    print('is_dup ')
+                    char_set.remove(s[i])
+                    char_set.add(s[j])
+                    j+=1
+                    break
+                else:
+                    char_set.add(s[j])
+                    max_v = max(max_v, len(char_set))
+                    print(max_v)
+                    j+=1
+                    print('no dup')
+                    print(char_set)
+
+        return max_v
+    
+        
+
+
+
     
         
