@@ -1,0 +1,75 @@
+"""
+9. Top ‘K’ Elements
+
+This pattern finds the k largest or smallest elements using heaps (priority queues). A min-heap of size k keeps track of k largest elements, and a max-heap keeps k smallest.
+
+When to use
+Finding k largest/smallest elements
+
+Finding kth largest/smallest element
+
+Finding k most/least frequent elements
+
+Merging k sorted lists
+
+Template
+// K largest elements using min-heap
+PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+for (int num : nums) {
+    minHeap.offer(num);
+    if (minHeap.size() > k) {
+        minHeap.poll(); // remove smallest
+    }
+}
+// minHeap now contains k largest elements
+// minHeap.peek() is the kth largest
+Sample Problem
+Kth Largest Element: Find the kth largest element in an unsorted array.
+
+Example:
+Input: nums = [3, 2, 1, 5, 6, 4], k = 2
+
+Output: 5
+
+Step-by-Step Walkthrough:
+nums = [3, 2, 1, 5, 6, 4], k = 2
+Using min-heap of size k
+
+Step 1: num = 3
+  heap = [3]
+
+Step 2: num = 2
+  heap = [2, 3]
+
+Step 3: num = 1
+  heap = [1, 3, 2], size > k
+  poll smallest: heap = [2, 3]
+
+Step 4: num = 5
+  heap = [2, 3, 5], size > k
+  poll smallest: heap = [3, 5]
+
+Step 5: num = 6
+  heap = [3, 5, 6], size > k
+  poll smallest: heap = [5, 6]
+
+Step 6: num = 4
+  heap = [4, 6, 5], size > k
+  poll smallest: heap = [5, 6]
+
+heap.peek() = 5 (kth largest)
+Practice Problems
+Kth Largest Element in an Array (LeetCode #215)
+
+Top K Frequent Elements (LeetCode #347)
+
+K Closest Points to Origin (LeetCode #973)
+
+Find K Pairs with Smallest Sums (LeetCode #373)
+
+Kth Largest Element in a Stream (LeetCode #703)
+"""
+
+
+
